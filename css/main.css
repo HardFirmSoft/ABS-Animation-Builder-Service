@@ -1,0 +1,37 @@
+html, body {
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffddde+0,ef282c+100 */
+    background: #ffddde; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffddde 0%, #ef282c 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #ffddde 0%,#ef282c 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #ffddde 0%,#ef282c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffddde', endColorstr='#ef282c',GradientType=0 ); /* IE6-9 */
+}
+
+.body-container{
+    margin-top: 80px;
+    background: #ffffff;
+}
+
+
+.button-menu button {
+    background-color: rgba(1, 10, 1, 0.959); 
+    border: 1px solid rgb(100, 100, 100);
+    color: white;
+    padding: 10px 24px; 
+    cursor: pointer; 
+    width: 25%; 
+    display: block; /* Make the buttons appear below each other */
+}
+
+.button-menu button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.button-menu button:hover {
+    background-color: #cc3434;
+}
