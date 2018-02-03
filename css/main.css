@@ -10,8 +10,13 @@ html, body {
     background: linear-gradient(to bottom,  #ffddde 0%,#ef282c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffddde', endColorstr='#ef282c',GradientType=0 ); /* IE6-9 */
 }
-
+.header{
+    font-size: 2em;
+    margin-bottom: 20px;
+}
 .body-container{
     margin-top: 80px;
     background: #ffffff;
+    width: 90%;
+    margin: 0 auto;
 }
