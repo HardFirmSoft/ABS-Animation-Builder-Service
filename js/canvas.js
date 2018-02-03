@@ -1,4 +1,4 @@
-window.onload = function(){
+/*window.onload = function(){
     if(storageAvailable(sessionStorage)){
         if(sessionStorage.length!=0){
 
@@ -9,19 +9,34 @@ window.onload = function(){
     }else{
         window.alert("Your browser does not support sessionStorage! Saving might not work!");
     }
-}
+}*/
+
+window.onload = initialize();
 
 function initialize(){
-    var stages = [];
+    //Create a stage by getting a reference to the canvas
+    var stage = new createjs.Stage("#content-pane");
+    var circle = new createjs.Shape();
+    circle.graphics.beginFill("red").drawCircle(0, 0, 40);
+    //Set position of Shape instance.
+    circle.x = circle.y = 50;
+    //Add Shape instance to stage display list.
+    stage.addChild(circle);
+    //Update stage will render next frame
+    stage.update();
+
+    /*var stages = [];
     stages[i] = new createjs.Stage("content-pane");
     i++;
+    stage[0].addChild(SunShine);
+    stage.update();*/
 }
 
-function update(){
+function updateSession(){
     sessionStorage.setItem('i', i);
 }
 
-function addChild(){
+function createChild(){
 
 }
 
