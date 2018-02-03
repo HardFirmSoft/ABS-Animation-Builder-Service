@@ -1,3 +1,10 @@
+/* Animation Builder - canvas.js
+/* Seng Chiat Haw & Francis Piche
+/* Copyright (c) 2018
+/*
+/* For any problems/diagnostics, refer to https://www.createjs.com/docs/easeljs/modules/EaselJS.html
+/*
+
 /*window.onload = function(){
     if(storageAvailable(sessionStorage)){
         if(sessionStorage.length!=0){
