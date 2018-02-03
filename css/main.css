@@ -1,15 +1,13 @@
-html, body {
+html{
     height: 100%;
-    max-height: 100%;
+    max-height: 100% !important;
     max-width: 100%;
-    overflow: hidden;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffddde+0,ef282c+100 */
     background: #ffddde; /* Old browsers */
     background: -moz-linear-gradient(top,  #ffddde 0%, #ef282c 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top,  #ffddde 0%,#ef282c 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,  #ffddde 0%,#ef282c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffddde', endColorstr='#ef282c',GradientType=0 ); /* IE6-9 */
-    padding: 3px;
 }
 
 
@@ -20,7 +18,10 @@ html, body {
     color: white;
     padding: 10px 24px; 
     cursor: pointer; 
-    width: 25%; 
+    width: 20vw;
+    height: 6.7vh;
+    min-width: 150px;
+    min-height: 50px;
     display: block; /* Make the buttons appear below each other */
 }
 
@@ -36,16 +37,22 @@ html, body {
 
 
 .header{
+    padding-top: 3px;
+    padding-left: 3px;
     font-size: 2.5em;
     font-family: 'Indie Flower', cursive;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 .body-container{
     margin-top: 80px;
-    background: #ffffff;
+    background: #e72b3b;
     width: 90%;
+    min-width: 1000px;
     margin: 0 auto;
 }
 #content-pane{
-    width: 75% !important;
+    width: 100% !important;
+    max-height: 70vh !important;
+    background: #ffffff;
+    min-width: 1000px;
 }
