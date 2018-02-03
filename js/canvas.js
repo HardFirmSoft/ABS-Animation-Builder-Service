@@ -21,8 +21,8 @@
     // resizes along with the browser window.					
     function redraw() {
         context.strokeStyle = 'black';
-        context.lineWidth = '10';
-        context.strokeRect(0, 0, window.innerWidth, window.innerHeight/2);
+        context.lineWidth = '1';
+        context.strokeRect(window.innerHeight*0.1, 0, window.innerWidth*0.9, window.innerHeight*(3/5));
     }
 
     // Runs each time the DOM window resize event fires.
@@ -30,7 +30,7 @@
     // then draws the new borders accordingly.
     function resizeCanvas() {
         htmlCanvas.width = window.innerWidth;
-        htmlCanvas.height = (window.innerHeight)/2;
+        htmlCanvas.height = (window.innerHeight)*(3/5);
         redraw();
     }
 
