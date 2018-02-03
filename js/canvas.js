@@ -3,6 +3,8 @@
     var htmlCanvas = document.getElementById('content-pane');
     // Obtain a graphics context on the canvas element for drawing
     var context = htmlCanvas.getContext('2d');
+
+    var bodyContainer = document.getElementsByClassName('body-container');
       
     // Start listening to resize events and
     // draw canvas.
@@ -21,7 +23,7 @@
     // resizes along with the browser window.					
     function redraw() {
         context.strokeStyle = 'black';
-        context.lineWidth = '1';
+        context.lineWidth = '2';
         context.strokeRect(window.innerHeight*0.1, 0, window.innerWidth*0.9, window.innerHeight*(3/5));
     }
 
@@ -29,8 +31,9 @@
     // Resets the canvas dimensions to match window,
     // then draws the new borders accordingly.
     function resizeCanvas() {
-        htmlCanvas.width = window.innerWidth;
+        htmlCanvas.width = window.innerWidth*0.9;
         htmlCanvas.height = (window.innerHeight)*(3/5);
+        bodyContainer.width = htmlCanvas.width;
         redraw();
     }
 
