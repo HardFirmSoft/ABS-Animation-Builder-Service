@@ -9,6 +9,7 @@ html, body {
     background: -webkit-linear-gradient(top,  #ffddde 0%,#ef282c 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,  #ffddde 0%,#ef282c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffddde', endColorstr='#ef282c',GradientType=0 ); /* IE6-9 */
+    padding: 3px;
 }
 .header{
     font-size: 2em;
@@ -19,4 +20,7 @@ html, body {
     background: #ffffff;
     width: 90%;
     margin: 0 auto;
+}
+#content-pane{
+    width: 75% !important;
 }
