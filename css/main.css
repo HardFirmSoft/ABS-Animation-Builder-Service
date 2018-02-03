@@ -12,8 +12,9 @@ html, body {
     padding: 3px;
 }
 .header{
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 2.5em;
+    font-family: 'Indie Flower', cursive;
+    margin-bottom: 10px;
 }
 .body-container{
     margin-top: 80px;
