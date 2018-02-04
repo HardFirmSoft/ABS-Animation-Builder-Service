@@ -51,11 +51,22 @@ var Octo = {
     images:["spritesheets/Octocat100x80.bmp"],
     frames: {width: 100, height:80},
     animations: {
-        crawl: [0,2,"crawl"]
+        shine: [0,3,"crawl"],
     }
 };
 presets.push(Octo);
 animations.push("crawl");
+
+var Star = {
+    framerate:3,
+    images:["spritesheets/Star100x80.bmp"],
+    frames: {width: 100, height:80},
+    animations: {
+        shine: [0,3,"flip"],
+    }
+};
+presets.push(Star);
+animations.push("flip")
 
 function instantiate(e){
     return new createjs.Sprite(new createjs.SpriteSheet(presets[e]), animations[e]);

@@ -34,14 +34,19 @@ span1.onclick = function() {
 };
 
 var greenFieldBtn = document.getElementById("greenField");
-
+var spaceBtn = document.getElementById("spaceBtn");
 greenFieldBtn.onclick = function(){
     var canvas = document.getElementById("content-pane");
     canvas.style.background = "url(images/background.bmp)";
     canvas.style.backgroundRepeat = "no-repeat";
     canvas.style.backgroundSize = "cover";
 };
-
+spaceBtn.onclick = function(){
+    var canvas = document.getElementById("content-pane");
+    canvas.style.background= "url(images/spacebackground.bmp)";
+    canvas.style.backgroundRepeat = "no-repeat";
+    canvas.style.backgroundSize = "cover";
+}
 //other popup logic
 
 efxBtn.onclick = function() {

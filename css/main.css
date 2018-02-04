@@ -35,7 +35,6 @@ html{
     background-size: cover;
     min-width: 1000px;
     min-height: 370px;
-    z-index:0;
     position:absolute;
     
 }
@@ -45,8 +44,10 @@ html{
     min-width:1000px;
     min-height:370px;
     position: absolute;
-    z-index: 1;
+    
 }
+
+
 
 .bottom-container{
     display: flex;
@@ -81,8 +82,9 @@ html{
 .editor{
     flex: 1;
     padding: 10px;
-    background: lightcoral;
+    background: rgb(87, 69, 69);
     text-align: center;
+    color: #f1eeee;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 

@@ -23,7 +23,7 @@ var coordinatesY = [];
 var children = [];
 
 window.onload = function(){
-    scene = new createjs.Stage("content-pane");
+    scene = new createjs.Stage("overlay");
    /* var xSpinner = $("#cX").spinner();
     var ySpinner = $("#cY").spinner();*/
     if(storageAvailable('sessionStorage')){
@@ -78,11 +78,15 @@ window.onload = function(){
 
 function initialize(){
     createjs.Ticker.addEventListener("tick", handleTick);
-    scene.enableMouseOver(10);
+   
     scene.update();
 }
 
+var snowbtn = document.getElementById("snowFX")
+
+
 function handleTick(event){
+    
     scene.update(event);
 }
 
