@@ -3,44 +3,46 @@
 /* Copyright (c) 2018
 /*
 /* For any problems/diagnostics, refer to https://www.createjs.com/docs/easeljs/modules/EaselJS.html
+*/
+
+var i; var stages = [];
+//createjs.Ticker.addEventListener("tick", animateStage);
+
 /*
+function handleTick() {
+ //Circle will move 10 units to the right.
+    circle.x += 10;
+    //Will cause the circle to wrap back
+    if (circle.x > stage.canvas.width) { circle.x = 0; }
+    stage.update();
+}
+*/
 
-/*window.onload = function(){
-    if(storageAvailable(sessionStorage)){
-        if(sessionStorage.length!=0){
-
-        }else{
-            var i = 0;
+window.onload = function(){
+    if(storageAvailable('sessionStorage')){
+      //  if(sessionStorage.length != 0){
+        //    i = sessionStorage.getItem('i');
+        //    stages = sessionStorage.getItem('stages');
+        //}else{
+            i = 0;
             initialize();
-        }
+        //}
     }else{
         window.alert("Your browser does not support sessionStorage! Saving might not work!");
     }
-}*/
-
-window.onload = initialize();
+}
 
 function initialize(){
-    //Create a stage by getting a reference to the canvas
-    var stage = new createjs.Stage("#content-pane");
-    var circle = new createjs.Shape();
-    circle.graphics.beginFill("red").drawCircle(0, 0, 40);
-    //Set position of Shape instance.
-    circle.x = circle.y = 50;
-    //Add Shape instance to stage display list.
-    stage.addChild(circle);
-    //Update stage will render next frame
-    stage.update();
-
-    /*var stages = [];
-    stages[i] = new createjs.Stage("content-pane");
+    stages.push(new createjs.Stage("content-pane"));
     i++;
-    stage[0].addChild(SunShine);
-    stage.update();*/
+    stages[0].addChild(SunShine);
+    updateSession();
+    stages[0].update();
 }
 
 function updateSession(){
     sessionStorage.setItem('i', i);
+    sessionStorage.setItem('stages', stages);
 }
 
 function createChild(){
