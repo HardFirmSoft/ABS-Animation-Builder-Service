@@ -1,6 +1,6 @@
 var Sun = {
-    images:["spritesheets/Sun500x400.bmp"],
-    frames: {width: 500, height:400},
+    images:["spritesheets/Sun100x80.bmp"],
+    frames: {width: 100, height:80},
     animations: {
         shine: [0,2]
     }
