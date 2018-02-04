@@ -13,15 +13,20 @@ function setWaypoint(e, x, y, time){
                 coordY: 135
             };
         }
+        for(k = time; k <= 600; k++){
+            anim[k] = {
+                coordX: x,
+                coordY: y
+            };
+        }
         sessionStorage.setItem("animate-"+e, JSON.stringify(anim));
-    }
-    var anim = JSON.parse(sessionStorage.getItem("animate-"+e));
-
-    for(k = time; k <= 60; k++){
-        anim[k] = {
-            coordX: x,
-            coordY: y
-        };
+    }else{
+        var anim = JSON.parse(sessionStorage.getItem("animate-"+e));
+            anim[time] = {
+                coordX: x,
+                coordY: y
+            };
+            //startCalculate(600);
     }
     sessionStorage.setItem("animate-"+e, JSON.stringify(anim));
 }
@@ -60,34 +65,30 @@ function calculateTween(e){
 }
 */
 
-function startCalculate(time){
-    for(var j=0; j<i; j++){
-        if(sessionStorage.getItem("animate-"+j != null)){
-            var anim = JSON.parse(sessionStorage.getItem("animate-"+j));
-            var preX = anim[time-1].coordX;
-            var preY = anim[time-1].coordY;
-            var pretime;
-            for(var k = time; k>=0; k--){
-                if(anim[k].coordX != preX || anim[k].coordY != preY){
-                    preX = anim[k].coordX;
-                    preY = anim[k].coordY;
-                    pretime = k;
-                    break;
-                }
-            }
-            var dX = anim[time].coordX - preX;
-            var dY = anim[time].coordY - preY;
-            var Xpt = dX/((time - pretime));
-            var Ypt = dY/((time - pretime));
-            
-            var inc = 1;
-            for(var k = pretime; k < time; k++){
-                anim[k].coordX += Xpt*inc;
-                anim[k].coordY += Ypt*inc;
-            }
-            sessionStorage.setItem("animate-"+j, JSON.stringify(anim));
+function startCalculate(e, time){
+    var anim = JSON.parse(sessionStorage.getItem("animate-"+e));
+    var preX = anim[time-1].coordX;
+    var preY = anim[time-1].coordY;
+    var pretime;
+    for(var k = time; k>=0; k--){
+        if(anim[k].coordX != preX || anim[k].coordY != preY){
+            preX = anim[k].coordX;
+            preY = anim[k].coordY;
+            pretime = k;
+            break;
         }
     }
+    var dX = anim[time].coordX - preX;
+    var dY = anim[time].coordY - preY;
+    var Xpt = dX/((time - pretime));
+    var Ypt = dY/((time - pretime));
+            
+    var inc = 1;
+    for(var k = pretime; k < time; k++){
+        anim[k].coordX += Xpt*inc;
+        anim[k].coordY += Ypt*inc;
+    }
+    sessionStorage.setItem("animate-"+e, JSON.stringify(anim));
 }
 
 function renderFrames(time){

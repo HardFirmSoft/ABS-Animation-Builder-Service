@@ -20,19 +20,33 @@ function handleTick() {
 var i;
 var coordinatesX = [];
 var coordinatesY = [];
+var children = [];
 
 window.onload = function(){
     scene = new createjs.Stage("content-pane");
     var xSpinner = $("#cX").spinner();
     var ySpinner = $("#cY").spinner();
     if(storageAvailable('sessionStorage')){
-      //  if(sessionStorage.length != 0){
-        //    i = sessionStorage.getItem('i');
-        //    stages = sessionStorage.getItem('stages');
-        //}else{
+      if(sessionStorage.length != 0){
+          i = sessionStorage.getItem('i');
+          coordinatesX = sessionStorage.getItem("cX");
+          coordinatesY = sessionStorage.getItem("cY");
+          children = sessionStorage.getItem("children");
+          for(var j=0; j<i; j++){
+            if(coordinatesX[j] != null && coordinatesY[j] != null){
+                scene.addChildAt(instantiate(children[j]), j);
+                scene.getChildAt(j).id = j;
+                scene.getChildAt(j).on("click", function(event){
+                    editChild(scene.getChildAt(this.id));
+                });
+                dragDrop(scene.getChildAt(j));
+            }
+          }
+          updateSession();
+        }else{
             i = 0;
             initialize();
-        //}
+        }
     }else{
         window.alert("Your browser does not support sessionStorage! Saving might not work!");
     }
@@ -40,12 +54,13 @@ window.onload = function(){
         clearSelection();
     });
     $( function() {
+        /*
         $( "#slider" ).slider({
             slide: function(event, ui){
                 $("#time").text("  "+((ui.value)*0.6).toFixed(1)+" s");
-                renderFrames(ui.value);
             }
         });
+        */
         $("#cX").spinner({
             spin: function(event, ui){
                 scene.getChildAt(sessionStorage.getItem("selected")).x = ui.value;
@@ -56,9 +71,6 @@ window.onload = function(){
                 scene.getChildAt(sessionStorage.getItem("selected")).y = ui.value;
             }
         });
-    });
-    $('#setFrame').on("click", function(){
-        setWaypoint(sessionStorage.getItem("selected"), $("#cX").spinner("value"), $("#cY").spinner("value"), $( "#slider" ).slider("value"));
     });
 }
 
@@ -81,9 +93,11 @@ function updateSession(){
     if(sessionStorage.getItem("selected") != null){
         opt_sel = sessionStorage.getItem("selected");
     }
-
+    sessionStorage.clear();
+    sessionStorage.setItem("i", i);
     sessionStorage.setItem("cX", JSON.stringify(coordinatesX));
     sessionStorage.setItem("cY", JSON.stringify(coordinatesY));
+    sessionStorage.setItem("children", JSON.stringify(children));
     if(opt_sel != null){
         sessionStorage.setItem("selected", opt_sel);
         $("#cX").spinner("value", coordinatesX[opt_sel]);
@@ -99,6 +113,7 @@ function createChild(e){
         editChild(scene.getChildAt(this.id));
     });
     dragDrop(scene.getChildAt(i));
+    children[i] = e;
     i++;
     updateSession();
 }
@@ -115,13 +130,10 @@ function editChild(e){
 function deleteChild(){
     document.getElementById("clicked").style.display = "none";
     document.getElementById("noclick").style.display = "block";
+    children[scene.getChildIndex(sessionStorage.getItem("selected"))] = null;
     scene.removeChildAt(sessionStorage.getItem("selected"));
     sessionStorage.removeItem("selected");
     updateSession();
-}
-
-function animateStage(){
-
 }
 
 function clearSelection(){
