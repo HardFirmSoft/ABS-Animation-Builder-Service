@@ -9,7 +9,38 @@ html{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffddde', endColorstr='#ef282c',GradientType=0 ); /* IE6-9 */
 }
 
+.header{
+    padding-top: 3px;
+    padding-left: 3px;
+    font-size: 3em;
+    font-family: 'Indie Flower', cursive;
+}
+.body-container{
+    margin-top: 80px;
+    background: #e72b3b;
+    width: 90%;
+    min-width: 1000px;
+    margin: 0 auto;
+}
+.canvas-container{
+    width: 100%;
+    height: 0;
+    padding-bottom: 37%;
+}
+#content-pane{
+    width:100%;
+    background: #ffffff;
+    min-width: 1000px;
+    min-height: 370px;
+}
 
+.bottom-container{
+    display: flex;
+}
+
+.button-menu{
+    width:20vw;
+}
 
 .button-menu button {
     background-color: rgba(1, 10, 1, 0.959); 
@@ -33,30 +64,8 @@ html{
     background-color: #cc3434;
 }
 
-
-
-.header{
-    padding-top: 3px;
-    padding-left: 3px;
-    font-size: 2.5em;
-    font-family: 'Indie Flower', cursive;
-    padding-bottom: 10px;
-}
-.body-container{
-    margin-top: 80px;
-    background: #e72b3b;
-    width: 90%;
-    min-width: 1000px;
-    margin: 0 auto;
-}
-.canvas-container{
-    width: 100%;
-    height: 0;
-    padding-bottom: 37%;
-}
-#content-pane{
-    width:100%;
-    background: #ffffff;
-    min-width: 1000px;
-    min-height: 370px;
+.editor{
+    flex: 1;
+    padding: 10px;
+    background: lightcoral;
 }

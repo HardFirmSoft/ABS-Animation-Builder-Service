@@ -5,7 +5,6 @@
 /* For any problems/diagnostics, refer to https://www.createjs.com/docs/easeljs/modules/EaselJS.html
 */
 
-var i; var stages = [];
 //createjs.Ticker.addEventListener("tick", animateStage);
 
 /*
@@ -18,13 +17,14 @@ function handleTick() {
 }
 */
 
+var children = [];
+
 window.onload = function(){
     if(storageAvailable('sessionStorage')){
       //  if(sessionStorage.length != 0){
         //    i = sessionStorage.getItem('i');
         //    stages = sessionStorage.getItem('stages');
         //}else{
-            i = 0;
             initialize();
         //}
     }else{
@@ -33,24 +33,31 @@ window.onload = function(){
 }
 
 function initialize(){
-    stages.push(new createjs.Stage("content-pane"));
-    i++;
-    stages[0].addChild(SunShine);
+    scene = new createjs.Stage("content-pane");
+    scene.addChild(SunShine);
+    children.push(presets.indexOf(SunShine));
     updateSession();
-    stages[0].update();
+    createjs.Ticker.addEventListener("tick", handleTick);
+    scene.update();
+}
+
+function handleTick(event){
+    scene.update(event);
 }
 
 function updateSession(){
-    sessionStorage.setItem('i', i);
-    sessionStorage.setItem('stages', stages);
+    sessionStorage.clear();
+    sessionStorage.setItem("sceneObj", JSON.stringify(children));
 }
 
-function createChild(){
-
+function createChild(e){
+    scene.addChild(presets[e]);
+    children.push(e);
+    updateSession();
 }
 
-function editChild(){
-
+function editChild(e){
+    
 }
 
 function deleteChild(){
