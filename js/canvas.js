@@ -23,6 +23,8 @@ var coordinatesY = [];
 
 window.onload = function(){
     scene = new createjs.Stage("content-pane");
+    var xSpinner = $("#cX").spinner();
+    var ySpinner = $("#cY").spinner();
     if(storageAvailable('sessionStorage')){
       //  if(sessionStorage.length != 0){
         //    i = sessionStorage.getItem('i');
@@ -43,10 +45,16 @@ window.onload = function(){
                 $("#time").text("  "+((ui.value)*0.6).toFixed(1)+" s");
             }
         });
-
-        var xSpinner = $("#cX").spinner();
-        var ySpinner = $("#cY").spinner();
-
+        $("#cX").spinner({
+            spin: function(event, ui){
+                scene.getChildAt(sessionStorage.getItem("selected")).x = ui.value;
+            }
+        });
+        $("#cY").spinner({
+            spin: function(event, ui){
+                scene.getChildAt(sessionStorage.getItem("selected")).y = ui.value;
+            }
+        });
     } );
 }
 
@@ -83,9 +91,12 @@ function updateSession(){
     sessionStorage.setItem("cY", JSON.stringify(coordinatesY));
     if(opt_sel != null){
         sessionStorage.setItem("selected", opt_sel);
+        $("#cX").spinner("value", coordinatesX[opt_sel]);
+        $("#cY").spinner("value", coordinatesY[opt_sel]);
     }
 }
 
+//accepts the index number of preset and creates an instance
 function createChild(e){
     scene.addChildAt(presets[e], i);
     children.push(e);

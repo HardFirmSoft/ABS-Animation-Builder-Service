@@ -32,6 +32,10 @@ presets.forEach(function(e){
     e.on("pressmove", function(event){
         event.target.x = event.stageX;
         event.target.y = event.stageY;
+    });
+    e.on("pressup", function(event) {
+        e.x = event.stageX;
+        e.y = event.stageY;
         updateSession();
     });
 });
