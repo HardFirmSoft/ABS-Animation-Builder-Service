@@ -43,6 +43,7 @@ window.onload = function(){
         $( "#slider" ).slider({
             slide: function(event, ui){
                 $("#time").text("  "+((ui.value)*0.6).toFixed(1)+" s");
+                renderFrames(ui.value);
             }
         });
         $("#cX").spinner({
@@ -55,6 +56,9 @@ window.onload = function(){
                 scene.getChildAt(sessionStorage.getItem("selected")).y = ui.value;
             }
         });
+    });
+    $('#setFrame').on("click", function(){
+        setWaypoint(sessionStorage.getItem("selected"), $("#cX").spinner("value"), $("#cY").spinner("value"), $( "#slider" ).slider("value"));
     });
 }
 
@@ -77,7 +81,7 @@ function updateSession(){
     if(sessionStorage.getItem("selected") != null){
         opt_sel = sessionStorage.getItem("selected");
     }
-    sessionStorage.clear();
+
     sessionStorage.setItem("cX", JSON.stringify(coordinatesX));
     sessionStorage.setItem("cY", JSON.stringify(coordinatesY));
     if(opt_sel != null){
