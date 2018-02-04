@@ -29,7 +29,9 @@ html{
 }
 #content-pane{
     width:100%;
-    background: #ffffff;
+    background-image: url("../images/backgroundtext.bmp");
+    background-repeat: no-repeat;
+    background-size: cover;
     min-width: 1000px;
     min-height: 370px;
 }
@@ -43,7 +45,7 @@ html{
 }
 
 .button-menu button {
-    background-color: rgba(1, 10, 1, 0.959); 
+    background-color: rgba(48, 8, 11, 0.959); 
     border: 1px solid rgb(100, 100, 100);
     color: white;
     padding: 10px 24px; 
@@ -114,9 +116,10 @@ html{
 }
 
 .modal-content {
+    text-align: center;
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 5px;
     border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
 }

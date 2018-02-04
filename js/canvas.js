@@ -60,6 +60,7 @@ window.onload = function(){
 
 function initialize(){
     createjs.Ticker.addEventListener("tick", handleTick);
+    scene.enableMouseOver(10);
     scene.update();
 }
 
@@ -74,6 +75,7 @@ function updateSession(){
     }
     var opt_sel;
     if(sessionStorage.getItem("selected") != null){
+        
         opt_sel = sessionStorage.getItem("selected");
     }
     sessionStorage.clear();
@@ -90,9 +92,11 @@ function updateSession(){
 function createChild(e){
     scene.addChildAt(instantiate(e), i);
     scene.getChildAt(i).id = i;
+    
     scene.getChildAt(i).on("click", function(event){
         editChild(scene.getChildAt(this.id));
     });
+    scene.getChildAt(i).originalscale = 1;
     dragDrop(scene.getChildAt(i));
     i++;
     updateSession();
@@ -150,9 +154,5 @@ function storageAvailable(type) {
     }
 }   
 
-    //logic for adding a Sun
-    var sunBtn = document.getElementById("sunBtn");
-    sunBtn.onclick = function(){
-        createChild(0);
-    };  
+   
     

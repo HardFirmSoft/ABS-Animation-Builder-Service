@@ -19,11 +19,43 @@ var Sun = {
         shine: [0,2,"shine"]
     }
 };
-var SunSS = new createjs.SpriteSheet(Sun);
-var SunShine = new createjs.Sprite(SunSS, "shine");
+
 presets.push(Sun);
 animations.push("shine");
 
+
+var Tree = {
+    framerate:3,
+    images:["spritesheets/Tree69x80.bmp"],
+    frames: {width: 69, height:80},
+    animations: {
+        shine: [0,2,"jump"]
+    }
+};
+presets.push(Tree);
+animations.push("jump");
+
+var Cloud = {
+    framerate:3,
+    images:["spritesheets/Cloud100x80.bmp"],
+    frames: {width: 100, height:80},
+    animations: {
+        puff: [0,2,"puff"]
+    }
+};
+presets.push(Cloud);
+animations.push("puff");
+
+var Octo = {
+    framerate:3,
+    images:["spritesheets/Octocat100x80.bmp"],
+    frames: {width: 100, height:80},
+    animations: {
+        crawl: [0,2,"crawl"]
+    }
+};
+presets.push(Octo);
+animations.push("crawl");
 
 function instantiate(e){
     return new createjs.Sprite(new createjs.SpriteSheet(presets[e]), animations[e]);
@@ -44,3 +76,5 @@ function dragDrop(e){
         updateSession();
     });
 }
+
+
