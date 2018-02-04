@@ -19,6 +19,7 @@ span.onclick = function() {
 
 
 
+
 //background popup logic
 backgrndBtn.onclick = function() {
     backgrndModal.style.display = "block";
@@ -31,7 +32,10 @@ span1.onclick = function() {
 var greenFieldBtn = document.getElementById("greenField");
 
 greenFieldBtn.onclick = function(){
-    document.getElementById("content-pane").style.background = "url(images/background.bmp)";
+    var canvas = document.getElementById("content-pane");
+    canvas.style.background = "url(images/background.bmp)";
+    canvas.style.backgroundRepeat = "no-repeat";
+    canvas.style.backgroundSize = "cover";
 };
 
 //other popup logic

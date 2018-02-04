@@ -125,4 +125,11 @@ function storageAvailable(type) {
             // acknowledge QuotaExceededError only if there's something already stored
             storage.length !== 0;
     }
-}
+}   
+
+    //logic for adding a Sun
+    var sunBtn = document.getElementById("sunBtn");
+    sunBtn.onclick = function(){
+        createChild(0);
+    };  
+    
