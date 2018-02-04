@@ -67,7 +67,7 @@ function startCalculate(time){
             var preX = anim[time-1].coordX;
             var preY = anim[time-1].coordY;
             var pretime;
-            for(var k = time*10; k>=0; k--){
+            for(var k = time; k>=0; k--){
                 if(anim[k].coordX != preX || anim[k].coordY != preY){
                     preX = anim[k].coordX;
                     preY = anim[k].coordY;
