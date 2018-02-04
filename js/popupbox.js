@@ -1,5 +1,6 @@
 var span = document.getElementById("close");
 var span1 = document.getElementById("close1");
+var span2 = document.getElementById("close2");
 
 var modelBtn = document.getElementById("modelsBtn");
 var modelModal= document.getElementById("modelModal");
@@ -7,6 +8,9 @@ var modelModal= document.getElementById("modelModal");
 
 var backgrndBtn = document.getElementById("backgroundBtn");
 var backgrndModal = document.getElementById("backgroundModal");
+
+var efxBtn = document.getElementById("efxBtn");
+var efxModal = document.getElementById("efxModal");
 
 //model popup logic
 modelBtn.onclick = function() {
@@ -39,19 +43,15 @@ greenFieldBtn.onclick = function(){
 };
 
 //other popup logic
-/*
-modelBtn.onclick = function() {
-    modelModal.style.display = "block";
+
+efxBtn.onclick = function() {
+    efxModal.style.display = "block";
 }
 
-span.onclick = function() {
-    modelModal.style.display = "none";
+span2.onclick = function() {
+    efxModal.style.display = "none";
 }
 
-window.onclick = function(event) {
-    if (event.target == modelModal) {
-        modelModal.style.display = "none";
-    }
-}
-*/
+
+
 

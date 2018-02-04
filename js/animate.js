@@ -9,7 +9,7 @@ function setWaypoint(e, x, y, time){
         var anim = [];
         for(k = 0; k < time; k++){
             anim[k] = {
-                coordX: 500,
+                coordX: 500, //default values
                 coordY: 135
             };
         }

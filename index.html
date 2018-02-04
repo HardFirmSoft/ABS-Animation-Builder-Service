@@ -20,15 +20,15 @@
     <div class="header">Animation Builder</div>
     <div class="body-container">
         <div class="canvas-container">
-            <canvas id="content-pane" width="1000" height="370">
-            </canvas>
+            <canvas id="content-pane" width="1000" height="370"></canvas>
+            <canvas id="overlay" width="1000" height="370"></canvas>
         </div>
 
     <div class="bottom-container">
         <div class="button-menu">
             <button id= "modelsBtn">Models</button>
-            <button id= "aniBtn">Animations</button>
             <button id ="backgroundBtn">Backdrops</button>
+            <button id = "efxBtn">Effects</button>
         </div>
         <div class="editor">
             <div class="ediTop">
@@ -80,6 +80,19 @@
               <span id="close1" class="close">&times;</span>
               <div class= "button-menu">
                     <button id="greenField">Greener Pastures</button>
+              </div>
+            </div>
+          
+    </div>
+
+    <div id="efxModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span id="close2" class="close">&times;</span>
+              <div class= "button-menu">
+                    <button id="snowFX">Snow</button>
+                    <button id="discoFX">Disco!</button>
               </div>
             </div>
           
