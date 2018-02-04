@@ -7,6 +7,7 @@
 
 //define the presets array
 var presets = [];
+var animations = [];
 
 //below goes the animation presets
 //0
@@ -20,11 +21,15 @@ var Sun = {
 };
 var SunSS = new createjs.SpriteSheet(Sun);
 var SunShine = new createjs.Sprite(SunSS, "shine");
-presets.push(SunShine);
+presets.push(Sun);
+animations.push("shine");
 
 
+function instantiate(e){
+    return new createjs.Sprite(new createjs.SpriteSheet(presets[e]), animations[e]);
+}
 
-presets.forEach(function(e){
+function dragDrop(e){
     e.regX = 50;
     e.regY = 50;
     e.x = 500;
@@ -38,4 +43,4 @@ presets.forEach(function(e){
         e.y = event.stageY;
         updateSession();
     });
-});
+}

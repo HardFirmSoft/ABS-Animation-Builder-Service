@@ -17,7 +17,7 @@ function handleTick() {
 }
 */
 
-var children = []; var i;
+var i;
 var coordinatesX = [];
 var coordinatesY = [];
 
@@ -55,18 +55,10 @@ window.onload = function(){
                 scene.getChildAt(sessionStorage.getItem("selected")).y = ui.value;
             }
         });
-    } );
+    });
 }
 
 function initialize(){
-    scene.addChildAt(presets[0], i);
-    children.push(i);
-    scene.getChildAt(i).id = i;
-    scene.getChildAt(i).on("click", function(event){
-        editChild(scene.getChildAt(this.id));
-    });
-    i++;
-    updateSession();
     createjs.Ticker.addEventListener("tick", handleTick);
     scene.update();
 }
@@ -85,7 +77,6 @@ function updateSession(){
         opt_sel = sessionStorage.getItem("selected");
     }
     sessionStorage.clear();
-    sessionStorage.setItem("sceneObj", JSON.stringify(children));
     sessionStorage.setItem("cX", JSON.stringify(coordinatesX));
     sessionStorage.setItem("cY", JSON.stringify(coordinatesY));
     if(opt_sel != null){
@@ -97,13 +88,12 @@ function updateSession(){
 
 //accepts the index number of preset and creates an instance
 function createChild(e){
-    scene.addChildAt(new createjs.Sprite(new createjs.SpriteSheet(Sun),"shine"),i);
-   // scene.addChildAt(presets[e], i);
-    children.push(e);
+    scene.addChildAt(instantiate(e), i);
     scene.getChildAt(i).id = i;
     scene.getChildAt(i).on("click", function(event){
         editChild(scene.getChildAt(this.id));
     });
+    dragDrop(scene.getChildAt(i));
     i++;
     updateSession();
 }
@@ -118,7 +108,11 @@ function editChild(e){
 }
 
 function deleteChild(){
-
+    document.getElementById("clicked").style.display = "none";
+    document.getElementById("noclick").style.display = "block";
+    scene.removeChildAt(sessionStorage.getItem("selected"));
+    sessionStorage.removeItem("selected");
+    updateSession();
 }
 
 function animateStage(){
