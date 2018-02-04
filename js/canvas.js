@@ -69,6 +69,7 @@ function handleTick(event){
 
 function updateSession(){
     for(j=0; j<i; j++){
+        if(scene.getChildAt(j) == null) continue;
         coordinatesX[j] = scene.getChildAt(j).x;
         coordinatesY[j] = scene.getChildAt(j).y;
     }
