@@ -9,6 +9,7 @@
 var presets = [];
 
 //below goes the animation presets
+//0
 var Sun = {
     framerate:3,
     images:["spritesheets/Sun100x80.bmp"],
