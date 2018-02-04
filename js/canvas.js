@@ -43,14 +43,19 @@ window.onload = function(){
                 $("#time").text("  "+((ui.value)*0.6).toFixed(1)+" s");
             }
         });
+
+        var xSpinner = $("#cX").spinner();
+        var ySpinner = $("#cY").spinner();
+
     } );
 }
 
 function initialize(){
     scene.addChildAt(SunShine, i);
     children.push(i);
+    scene.getChildAt(i).id = i;
     scene.getChildAt(i).on("click", function(event){
-        editChild(scene.getChildAt(i));
+        editChild(scene.getChildAt(this.id));
     });
     i++;
     updateSession();
@@ -67,17 +72,25 @@ function updateSession(){
         coordinatesX[j] = scene.getChildAt(j).x;
         coordinatesY[j] = scene.getChildAt(j).y;
     }
+    var opt_sel;
+    if(sessionStorage.getItem("selected") != null){
+        opt_sel = sessionStorage.getItem("selected");
+    }
     sessionStorage.clear();
     sessionStorage.setItem("sceneObj", JSON.stringify(children));
     sessionStorage.setItem("cX", JSON.stringify(coordinatesX));
     sessionStorage.setItem("cY", JSON.stringify(coordinatesY));
+    if(opt_sel != null){
+        sessionStorage.setItem("selected", opt_sel);
+    }
 }
 
 function createChild(e){
     scene.addChildAt(presets[e], i);
     children.push(e);
+    scene.getChildAt(i).id = i;
     scene.getChildAt(i).on("click", function(event){
-        editChild(scene.getChildAt(i));
+        editChild(scene.getChildAt(this.id));
     });
     i++;
     updateSession();
@@ -87,6 +100,8 @@ function editChild(e){
     document.getElementById("noclick").style.display = "none";
     document.getElementById("clicked").style.display = "block";
     var cid = scene.getChildIndex(e);
+    e.alpha = 0.5;
+    sessionStorage.setItem("selected", cid);
     document.getElementById("clickTT").innerHTML = "Item #"+(cid+1);
 }
 
@@ -101,6 +116,8 @@ function animateStage(){
 function clearSelection(){
     document.getElementById("clicked").style.display = "none";
     document.getElementById("noclick").style.display = "block";
+    scene.getChildAt(sessionStorage.getItem("selected")).alpha = 1;
+    sessionStorage.removeItem("selected");
 }
 
 function storageAvailable(type) {
