@@ -40,7 +40,8 @@
                     <input id="cX" name="value">
                     <label for="cY">Y Coordinate:</label>
                     <input id="cY" name="value">
-                    <button>Set waypoint</button>
+                    <button id="setFrame">Set waypoint</button>
+                    <button id="delChild" onclick="deleteChild()">Delete</button>
                 </div>
             </div>
             <div class="timeline">
@@ -64,7 +65,7 @@
           <span id="close" class="close">&times;</span>
           <div class= "button-menu">
                 <button id="treeBtn">Jumpy Tree</button>
-                <button id="sunBtn">Sun Dance</button>
+                <button id="sunBtn" onclick="createChild(0)">Sun Dance</button>
           </div>
         </div>
       
