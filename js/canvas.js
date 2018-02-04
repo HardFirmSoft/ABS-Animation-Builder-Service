@@ -45,7 +45,16 @@ window.onload = function(){
                 $("#time").text("  "+((ui.value)*0.6).toFixed(1)+" s");
             }
         });
-
+        $("#cX").spinner({
+            spin: function(event, ui){
+                scene.getChildAt(sessionStorage.getItem("selected")).x = ui.value;
+            }
+        });
+        $("#cY").spinner({
+            spin: function(event, ui){
+                scene.getChildAt(sessionStorage.getItem("selected")).y = ui.value;
+            }
+        });
     } );
 }
 
