@@ -60,12 +60,11 @@ window.onload = function(){
 
 function initialize(){
     scene.addChildAt(presets[0], i);
-    //children.push(i);
+    children.push(i);
     scene.getChildAt(i).id = i;
     scene.getChildAt(i).on("click", function(event){
         editChild(scene.getChildAt(this.id));
     });
-    console.log(scene.getChildAt(i));
     i++;
     updateSession();
     createjs.Ticker.addEventListener("tick", handleTick);
@@ -98,7 +97,8 @@ function updateSession(){
 
 //accepts the index number of preset and creates an instance
 function createChild(e){
-    scene.addChildAt(presets[e], i);
+    scene.addChildAt(new createjs.Sprite(new createjs.SpriteSheet(Sun),"shine"),i);
+   // scene.addChildAt(presets[e], i);
     children.push(e);
     scene.getChildAt(i).id = i;
     scene.getChildAt(i).on("click", function(event){
