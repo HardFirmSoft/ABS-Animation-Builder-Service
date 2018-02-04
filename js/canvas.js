@@ -24,9 +24,10 @@ var children = [];
 
 window.onload = function(){
     scene = new createjs.Stage("content-pane");
-    var xSpinner = $("#cX").spinner();
-    var ySpinner = $("#cY").spinner();
+   /* var xSpinner = $("#cX").spinner();
+    var ySpinner = $("#cY").spinner();*/
     if(storageAvailable('sessionStorage')){
+        /*
       if(sessionStorage.length != 0){
           i = sessionStorage.getItem('i');
           coordinatesX = sessionStorage.getItem("cX");
@@ -44,9 +45,10 @@ window.onload = function(){
           }
           updateSession();
         }else{
+            */
             i = 0;
             initialize();
-        }
+        //}
     }else{
         window.alert("Your browser does not support sessionStorage! Saving might not work!");
     }
