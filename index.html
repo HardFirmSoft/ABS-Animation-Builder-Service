@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/createjs.min.js"></script>
     <script type="text/javascript" src="js/sprites.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
+   
 </head>
 <body>
     <div class="header">Animation Builder</div>
@@ -24,9 +25,9 @@
 
     <div class="bottom-container">
         <div class="button-menu">
-            <button>Insert Image</button>
-            <button>Animations</button>
-            <button>Effects</button>
+            <button id= "modelsBtn">Models</button>
+            <button id= "aniBtn">Animations</button>
+            <button id ="backgroundBtn">Backdrops</button>
         </div>
         <div class="editor">
             <div class="ediTop">
@@ -49,5 +50,33 @@
 
     </div>
     
+    <!-- The Modal -->
+
+
+  <div id="modelModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span id="close" class="close">&times;</span>
+          <div class= "button-menu">
+                <button id="treeBtn">Jumpy Tree</button>
+                <button id="sunBtn">Sun Dance</button>
+          </div>
+        </div>
+      
+    </div>
+
+    <div id="backgroundModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span id="close1" class="close">&times;</span>
+              <div class= "button-menu">
+                    <button id="greenField">Greener Pastures</button>
+              </div>
+            </div>
+          
+    </div>
+  <script type="text/javascript" src="js/popupbox.js"></script>
 </body>
 </html>
