@@ -69,6 +69,7 @@ html{
     padding: 10px;
     background: lightcoral;
     text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #clicked{
@@ -76,18 +77,25 @@ html{
 }
 
 #noclick{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 1.5em;
     padding-top: 50px;
+    font-size: 1.5em;
 }
 
 .ediTop{
-    height: 50%;
+    height: 80% !important;
+    overflow: hidden;
 }
 
 .timeline{
-    margin: 0 auto;
+    display: flex;
     width: 50%;
-    position: relative;
-    bottom: 5;
+    position: absolute;
+    bottom: 5 !important;
+    padding-left: 10%;
+}
+.timeSlide{
+    flex: 10;
+}
+#time{
+    flex: 1;
 }

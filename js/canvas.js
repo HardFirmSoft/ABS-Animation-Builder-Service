@@ -38,7 +38,11 @@ window.onload = function(){
         clearSelection();
     });
     $( function() {
-        $( "#slider" ).slider();
+        $( "#slider" ).slider({
+            slide: function(event, ui){
+                $("#time").text("  "+((ui.value)*0.6).toFixed(1)+" s");
+            }
+        });
     } );
 }
 
@@ -81,7 +85,7 @@ function createChild(e){
 
 function editChild(e){
     document.getElementById("noclick").style.display = "none";
-    document.getElementById("clicked").style.display = "initial";
+    document.getElementById("clicked").style.display = "block";
     var cid = scene.getChildIndex(e);
     document.getElementById("clickTT").innerHTML = "Item #"+(cid+1);
 }
@@ -96,7 +100,7 @@ function animateStage(){
 
 function clearSelection(){
     document.getElementById("clicked").style.display = "none";
-    document.getElementById("noclick").style.display = "initial";
+    document.getElementById("noclick").style.display = "block";
 }
 
 function storageAvailable(type) {
