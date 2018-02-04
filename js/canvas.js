@@ -17,25 +17,38 @@ function handleTick() {
 }
 */
 
-var children = [];
+var children = []; var i;
+var coordinatesX = [];
+var coordinatesY = [];
 
 window.onload = function(){
+    scene = new createjs.Stage("content-pane");
     if(storageAvailable('sessionStorage')){
       //  if(sessionStorage.length != 0){
         //    i = sessionStorage.getItem('i');
         //    stages = sessionStorage.getItem('stages');
         //}else{
+            i = 0;
             initialize();
         //}
     }else{
         window.alert("Your browser does not support sessionStorage! Saving might not work!");
     }
+    scene.on("stagemousedown", function(event){
+        clearSelection();
+    });
+    $( function() {
+        $( "#slider" ).slider();
+    } );
 }
 
 function initialize(){
-    scene = new createjs.Stage("content-pane");
-    scene.addChild(SunShine);
-    children.push(presets.indexOf(SunShine));
+    scene.addChildAt(SunShine, i);
+    children.push(i);
+    scene.getChildAt(i).on("click", function(event){
+        editChild(scene.getChildAt(i));
+    });
+    i++;
     updateSession();
     createjs.Ticker.addEventListener("tick", handleTick);
     scene.update();
@@ -46,18 +59,31 @@ function handleTick(event){
 }
 
 function updateSession(){
+    for(j=0; j<i; j++){
+        coordinatesX[j] = scene.getChildAt(j).x;
+        coordinatesY[j] = scene.getChildAt(j).y;
+    }
     sessionStorage.clear();
     sessionStorage.setItem("sceneObj", JSON.stringify(children));
+    sessionStorage.setItem("cX", JSON.stringify(coordinatesX));
+    sessionStorage.setItem("cY", JSON.stringify(coordinatesY));
 }
 
 function createChild(e){
-    scene.addChild(presets[e]);
+    scene.addChildAt(presets[e], i);
     children.push(e);
+    scene.getChildAt(i).on("click", function(event){
+        editChild(scene.getChildAt(i));
+    });
+    i++;
     updateSession();
 }
 
 function editChild(e){
-    
+    document.getElementById("noclick").style.display = "none";
+    document.getElementById("clicked").style.display = "initial";
+    var cid = scene.getChildIndex(e);
+    document.getElementById("clickTT").innerHTML = "Item #"+(cid+1);
 }
 
 function deleteChild(){
@@ -68,8 +94,9 @@ function animateStage(){
 
 }
 
-function newStage(){
-
+function clearSelection(){
+    document.getElementById("clicked").style.display = "none";
+    document.getElementById("noclick").style.display = "initial";
 }
 
 function storageAvailable(type) {

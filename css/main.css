@@ -68,6 +68,28 @@ html{
     flex: 1;
     padding: 10px;
     background: lightcoral;
+    text-align: center;
+}
+
+#clicked{
+    display: none;
+}
+
+#noclick{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+    padding-top: 50px;
+}
+
+.ediTop{
+    height: 50%;
+}
+
+.timeline{
+    margin: 0 auto;
+    width: 50%;
+    position: relative;
+    bottom: 5;
 }
 
 .modal {
