@@ -51,12 +51,13 @@ window.onload = function(){
 }
 
 function initialize(){
-    scene.addChildAt(SunShine, i);
-    children.push(i);
+    scene.addChildAt(presets[0], i);
+    //children.push(i);
     scene.getChildAt(i).id = i;
     scene.getChildAt(i).on("click", function(event){
         editChild(scene.getChildAt(this.id));
     });
+    console.log(scene.getChildAt(i));
     i++;
     updateSession();
     createjs.Ticker.addEventListener("tick", handleTick);
