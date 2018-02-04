@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="js/jquery-ui/jquery-ui.min.css">
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/createjs.min.js"></script>
     <script type="text/javascript" src="js/sprites.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
@@ -27,7 +29,21 @@
             <button>Effects</button>
         </div>
         <div class="editor">
-            something will be here, maybe, probably
+            <div id="noclick" class="ediTop">
+                Select an object to view/edit its parameter.
+            </div>
+            <div id="clicked" class="ediTop">
+                <h3 id="clickTT"></h3><br>
+                <button>Set waypoint</button>
+            </div>
+            <div class="timeline">
+                <table width="100%" border="0">
+                    <tr>
+                        <td width="90%"><div id="slider"></div></td>
+                        <td width="10%">some</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 

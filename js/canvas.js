@@ -22,6 +22,7 @@ var coordinatesX = [];
 var coordinatesY = [];
 
 window.onload = function(){
+    scene = new createjs.Stage("content-pane");
     if(storageAvailable('sessionStorage')){
       //  if(sessionStorage.length != 0){
         //    i = sessionStorage.getItem('i');
@@ -33,10 +34,15 @@ window.onload = function(){
     }else{
         window.alert("Your browser does not support sessionStorage! Saving might not work!");
     }
+    scene.on("stagemousedown", function(event){
+        clearSelection();
+    });
+    $( function() {
+        $( "#slider" ).slider();
+    } );
 }
 
 function initialize(){
-    scene = new createjs.Stage("content-pane");
     scene.addChildAt(SunShine, i);
     children.push(i);
     scene.getChildAt(i).on("click", function(event){
@@ -74,7 +80,10 @@ function createChild(e){
 }
 
 function editChild(e){
-    
+    document.getElementById("noclick").style.display = "none";
+    document.getElementById("clicked").style.display = "initial";
+    var cid = scene.getChildIndex(e);
+    document.getElementById("clickTT").innerHTML = "Item #"+(cid+1);
 }
 
 function deleteChild(){
@@ -85,8 +94,9 @@ function animateStage(){
 
 }
 
-function newStage(){
-
+function clearSelection(){
+    document.getElementById("clicked").style.display = "none";
+    document.getElementById("noclick").style.display = "initial";
 }
 
 function storageAvailable(type) {
